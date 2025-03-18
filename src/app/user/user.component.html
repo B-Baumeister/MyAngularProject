@@ -1,6 +1,11 @@
 <div>
   <button>
-    <img [src]="'assets/users/' + selectedUser.avatar" />
+    <img
+      [src]="'assets/users/' + selectedUser.avatar"
+      [alt]="selectedUser.name"
+    />
+    <!-- property binding -->
     <span>{{ selectedUser.name }}</span>
+    <!-- string binding  -->
   </button>
 </div>
