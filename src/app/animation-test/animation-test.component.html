@@ -1,0 +1,26 @@
+<p>animation-test works!</p>
+<button class="btn btn-primary" (click)="onAnimate()">ANIMATE!</button>
+<button class="btn btn-primary" (click)="onShrink()">SHRINK!</button>
+<hr />
+<div
+  [@divState]="state"
+  (@divState.start)="animationStarted($event)"
+  (@divState.done)="animationEnded($event)"
+>
+  style="width: 100px; height: 100px">
+</div>
+<br />
+<div [@wildState]="wildState" style="width: 100px; height: 100px"></div>
+<input type="text" #input />
+<button (click)="onAdd(input.value)">ADD</button>
+<ul>
+  <li [@list1] (click)="onDelete(item)" *ngFor="let item of list">
+    {{ item }}
+  </li>
+</ul>
+<br />
+<ul>
+  <li [@list2] (click)="onDelete(item)" *ngFor="let item of list">
+    {{ item }}
+  </li>
+</ul>
