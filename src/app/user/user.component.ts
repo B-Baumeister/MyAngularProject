@@ -11,8 +11,9 @@ export class UserComponent {
   @Input() id!: string;
   @Input() avatar!: string;
   @Input() name!: string;
-  // @Output() select = new EventEmitter();
-  select = output<string>(); //hiermit braucht mein nicht mehr speziell sagen, dass es newEventEmitter beinhaltet. Aber Wir müssen jetzt TS sagen, welcher typ die daten sind. Es sind auch keine signals im gegensatz zum input
+  @Output() select = new EventEmitter();
+  @Output() selectedUserId?: string;
+  // select = output<string>(); //hiermit braucht mein nicht mehr speziell sagen, dass es newEventEmitter beinhaltet. Aber Wir müssen jetzt TS sagen, welcher typ die daten sind. Es sind auch keine signals im gegensatz zum input
 
   get imagePath() {
     return '/assets/users/' + this.avatar;
@@ -20,5 +21,6 @@ export class UserComponent {
 
   onSelectUser() {
     this.select.emit(this.id);
+    this.selectedUserId = this.id;
   }
 }
