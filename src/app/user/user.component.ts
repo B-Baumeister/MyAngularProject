@@ -1,4 +1,4 @@
-import { Component, computed, Input, signal, input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,19 +8,16 @@ import { Component, computed, Input, signal, input } from '@angular/core';
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
-  // @Input() avatar!: string;
-  // @Input() name!: string;
+  @Input() id!: string;
+  @Input() avatar!: string;
+  @Input() name!: string;
+  @Output() select = new EventEmitter();
 
-  avatar = input<string>(); // input<string> ist ein typescript-Ding --> generic Type
-  name = input<string>();
-//bisher sind diese signals ausschließlich lesbare signals. also wenn sich was von außen ändert, werden diese aktualisiert. ich kann diese in dem sinne noch nicht ändern
-  imagePath = computed(() => {
-    return 'assets/users/' + this.avatar();
-  });
+  get imagePath() {
+    return '/assets/users/' + this.avatar;
+  }
 
-  // get imagePath() {
-  //   return '/assets/users/' + this.avatar;
-  // }
-
-  onSelectUser() {}
+  onSelectUser() {
+    this.select.emit(this.id);
+  }
 }
