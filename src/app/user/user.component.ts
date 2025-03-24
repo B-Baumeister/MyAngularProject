@@ -10,7 +10,7 @@ import { User } from './user.model';
 })
 export class UserComponent {
   @Input() user!: User;
-
+  @Input({ required: true }) selected!: boolean;
   @Output() select = new EventEmitter();
   @Output() selectedUserId?: string;
   // select = output<string>(); //hiermit braucht mein nicht mehr speziell sagen, dass es newEventEmitter beinhaltet. Aber Wir müssen jetzt TS sagen, welcher typ die daten sind. Es sind auch keine signals im gegensatz zum input
