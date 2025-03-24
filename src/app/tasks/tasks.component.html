@@ -6,7 +6,9 @@
       <button>Add Task</button>
     </menu>
   </header>
-  <ul>
-    <li><app-task></app-task></li>
+  <ul id="tasks">
+    @for (task of selectedUserTasks; track task.id) {
+    <li><app-task [task]="task" /></li>
+    }
   </ul>
 </section>
