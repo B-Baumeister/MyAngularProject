@@ -1,3 +1,6 @@
+@if (isAddingTask) {
+<app-new-task (cancel)="onCancelAddTask()" />
+}
 <section id="tasks">
   <header>
     <h2>{{ name }}'s tasks</h2>
@@ -13,6 +16,3 @@
     }
   </ul>
 </section>
-@if (isAddingTask) {
-<app-new-task />
-}

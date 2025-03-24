@@ -26,6 +26,10 @@ export class TasksComponent {
     //a new task
   }
 
+  onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
   tasks = [
     {
       id: 't1',
